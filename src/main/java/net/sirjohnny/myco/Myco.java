@@ -11,6 +11,7 @@ import net.sirjohnny.myco.item.ModItems;
 import net.sirjohnny.myco.potion.ModPotions;
 import net.sirjohnny.myco.recipe.ModRecipes;
 
+import net.sirjohnny.myco.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +29,7 @@ public class Myco implements ModInitializer {
 		ModEffects.registerEffects();
 		ModRecipes.registerRecipeSerializers();
 		ModDataComponentTypes.registerDataComponentTypes();
+		ModWorldGeneration.generateModWorldGen();
 
 		FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
 			builder.registerPotionRecipe(Potions.AWKWARD, ModItems.BOTTLE_OF_MUSCIMOL, ModPotions.MUSCIMOL_POISON);
