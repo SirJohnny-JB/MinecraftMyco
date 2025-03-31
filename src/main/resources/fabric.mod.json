@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "myco",
+	"version": "${version}",
+	"name": "Myco",
+	"description": "Mushrooms!",
+	"authors": [
+		"SirJohnny"
+	],
+	"contact": {
+		"homepage": "N/A",
+		"sources": "N/A"
+	},
+	"license": "MIT",
+	"icon": "assets/myco/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.sirjohnny.myco.Myco"
+		],
+		"fabric-datagen": [
+			"net.sirjohnny.myco.MycoDataGenerator"
+		],
+		"client": [
+			"net.sirjohnny.myco.MycoClient"
+		]
+	},
+	"mixins": [
+		"myco.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

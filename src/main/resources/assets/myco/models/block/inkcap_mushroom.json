@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "myco:block/inkcap_mushroom"
+  }
+}

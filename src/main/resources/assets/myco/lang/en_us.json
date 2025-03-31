@@ -1,0 +1,25 @@
+{
+  "item.myco.swabbed_spores": "Swabbed Spores",
+  "item.myco.cotten_swab": "Cotten Swab",
+  "item.myco.cotton_swab": "Cotton Swab",
+  "item.myco.bottle_of_ink": "Bottle of Ink",
+  "item.myco.bottle_of_muscimol": "Bottle of Muscimol",
+  "item.myco.fungal_extract": "Fungal Extract",
+
+  "item.minecraft.potion.effect.muscimol_poison": "Muscimol Poison",
+  "item.minecraft.splash_potion.effect.muscimol_poison": "Muscimol Splash Poison",
+  "item.minecraft.lingering_potion.effect.muscimol_poison": "Muscimol Lingering Poison",
+  "item.minecraft.potion.effect.muscimol_poison_ii": "Muscimol Poison II",
+  "item.minecraft.splash_potion.effect.muscimol_poison_ii": "Muscimol Splash Poison II",
+  "item.minecraft.lingering_potion.effect.muscimol_poison_ii": "Muscimol Lingering Poison II",
+
+  "block.myco.fungal_planter": "Fungal Planter",
+  "block.myco.inkcap_mushroom": "Inkcap Mushroom",
+  "block.myco.fly_agaric_mushroom": "Fly Agaric Mushroom",
+  "block.myco.destroying_angel_mushroom": "Destroying Angel Mushroom",
+
+  "itemgroup.myco.myco_items": "Myco Items",
+  "itemgroup.myco.myco_blocks": "Myco Blocks",
+
+  "effect.myco.lethal_poison": "Lethal Poison"
+}

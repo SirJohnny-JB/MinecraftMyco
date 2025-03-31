@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "myco:block/destroying_angel_mushroom"
+  }
+}
