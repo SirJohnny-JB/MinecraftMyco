@@ -17,7 +17,6 @@ import net.sirjohnny.myco.item.custom.FungalExtractItem;
 
 public class ModItems {
     public static final Item SWABBED_SPORES = registerItem("swabbed_spores", new Item(new Item.Settings()));
-    public static final Item COTTEN_SWAB = registerItem("cotten_swab", new Item(new Item.Settings()));
     public static final Item BOTTLE_OF_INK = registerItem("bottle_of_ink", new Item(new Item.Settings()));
     public static final Item BOTTLE_OF_MUSCIMOL = registerItem("bottle_of_muscimol", new Item(new Item.Settings()));
     public static final Item FLY_AGARIC_MUSHROOM_ITEM = registerModBlockItem("fly_agaric_mushroom", ModBlocks.FLY_AGARIC_MUSHROOM);
@@ -40,10 +39,6 @@ public class ModItems {
             entries.add(COTTON_SWAB);
             entries.add(BOTTLE_OF_INK);
             entries.add(FUNGAL_EXTRACT);
-        });
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.add(COTTEN_SWAB);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {

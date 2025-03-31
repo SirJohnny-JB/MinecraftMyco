@@ -1,32 +1,20 @@
 package net.sirjohnny.myco.recipe;
 
 
-import net.minecraft.component.Component;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.LoreComponent;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
-import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
-import net.sirjohnny.myco.Myco;
-import net.sirjohnny.myco.block.ModBlocks;
 import net.sirjohnny.myco.component.ModDataComponentTypes;
 import net.sirjohnny.myco.item.ModItems;
-import net.sirjohnny.myco.item.custom.ModItemTags;
 import net.sirjohnny.myco.util.ModTags;
 
-import java.util.List;
 import java.util.Objects;
 
 public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
@@ -45,6 +33,7 @@ public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
             ItemStack stack = input.getStackInSlot(i);
             if (!stack.isEmpty()) {
                 Item item = stack.getItem();
+                // check if ingredient is a mushroom (if statement for debug purposes)
                 if (stack.isIn(ModTags.Items.FUNGI)){
                     System.out.println("SIRJOHNNY: " + item.getName().getString() + ": is a mushroom");
                 } else {
@@ -57,31 +46,31 @@ public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
             }
         }
 
-        return hasBottle && hasMushroom;
+        return hasBottle && hasMushroom; // ingredient requirements fulfilled
     }
 
     @Override
     public ItemStack craft(CraftingRecipeInput inventory, RegistryWrapper.WrapperLookup manager) {
-        String mushroomId = "unknown";
-        System.out.println("SIRJOHNNY: CRAFTING...");
+        String mushroomId = "unknown"; // placeholder
 
         for (int i = 0; i < inventory.getSize(); i++){
             ItemStack stack = inventory.getStackInSlot(i);
             System.out.println("SIRJOHNNY: SELECTED SLOT: " + stack.getItem().getDefaultStack().getName().getString());
+
+            // Assigns mushroom species to 'mushroomId'
             if (!stack.isEmpty() && Objects.equals(stack.getItem().getDefaultStack().getName().getString(), "Fly Agaric Mushroom")){
                 System.out.println("SIRJOHNNY: THIS IS A MUSHROOM");
                 mushroomId = stack.getItem().getDefaultStack().getName().getString();
                 System.out.println(mushroomId);
                 break;
             }
-//            if (!stack.isEmpty() && stack.getItem().getDefaultStack().isIn(ModItemTags.MUSHROOMS)){
-//                mushroomId = stack.getItem().toString();
-//                break;
-//            }
+
         }
 
         ItemStack result = new ItemStack(ModItems.FUNGAL_EXTRACT);
-        result.set(ModDataComponentTypes.FUNGISOURCE, mushroomId);
+        result.set(ModDataComponentTypes.FUNGISOURCE, mushroomId); // Assigns mushroomId as the source of the chemical
+
+        // Checks mushroom species and assigns chemicals accordingly
         if (Objects.equals(result.get(ModDataComponentTypes.FUNGISOURCE), "Fly Agaric Mushroom")){
             result.set(ModDataComponentTypes.CHEMICAL, "Muscimol");
         }

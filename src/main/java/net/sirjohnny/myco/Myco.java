@@ -7,7 +7,6 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.Potions;
 import net.sirjohnny.myco.component.ModDataComponentTypes;
 import net.sirjohnny.myco.effect.ModEffects;
-import net.sirjohnny.myco.item.ModItemGroups;
 import net.sirjohnny.myco.item.ModItems;
 import net.sirjohnny.myco.potion.ModPotions;
 import net.sirjohnny.myco.recipe.ModRecipes;
@@ -22,14 +21,13 @@ public class Myco implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItemGroups.registerItemGroups();
+
 
 		ModItems.registerModItems();
 //		ModBlocks.registerModBlocks();
 		ModPotions.registerPotions();
 		ModEffects.registerEffects();
 		ModRecipes.registerRecipeSerializers();
-//		ModWorldGeneration.generateModWorldGen();
 		ModDataComponentTypes.registerDataComponentTypes();
 
 		FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
