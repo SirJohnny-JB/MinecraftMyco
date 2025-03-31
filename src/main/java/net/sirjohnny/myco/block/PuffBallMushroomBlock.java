@@ -10,6 +10,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
@@ -26,6 +27,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import org.jetbrains.annotations.Nullable;
+
 
 public class PuffBallMushroomBlock extends ModMushroomBlock{
     public PuffBallMushroomBlock(RegistryKey<ConfiguredFeature<?, ?>> featureKey, Settings settings) {
@@ -113,7 +116,8 @@ public class PuffBallMushroomBlock extends ModMushroomBlock{
             world.playSound(null, pos, SoundEvents.ENTITY_SNOW_GOLEM_DEATH, SoundCategory.BLOCKS, 0.7F, 1.3F);
 
             world.setBlockState(pos, state.with(PUFFED, true), Block.NOTIFY_ALL);
-            int delay = world.getRandom().nextBetween(1200,6000);
+//            int delay = world.getRandom().nextBetween(1200,6000);
+            int delay = world.getRandom().nextBetween(500,700);
             world.scheduleBlockTick(pos, this, delay);
         }
         super.onProjectileHit(world, state, hit, projectile);
@@ -150,7 +154,30 @@ public class PuffBallMushroomBlock extends ModMushroomBlock{
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(PUFFED)) {
+            System.out.println("Block is no longer puffed");
+            world.playSound(null, pos, SoundEvents.BLOCK_SAND_STEP, SoundCategory.BLOCKS, 0.9F, 1.3F);
             world.setBlockState(pos, state.with(PUFFED, false), Block.NOTIFY_ALL);
+
         }
     }
+
+    @Override
+    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(PUFFED, false);
+    }
+
+//    @Override
+//    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+//        BlockPos targetPos = pos.add(
+//                random.nextInt(3) - 1,
+//                random.nextInt(2) - random.nextInt(2),
+//                random.nextInt(3) - 1
+//        );
+//
+//        if (world.isAir(targetPos) && state.canPlaceAt(world, targetPos)) {
+//            world.setBlockState(targetPos, this.getDefaultState().with(PUFFED, false), Block.NOTIFY_ALL);
+//        }
+//
+//        super.randomTick(state, world, pos, random);
+//    }
 }

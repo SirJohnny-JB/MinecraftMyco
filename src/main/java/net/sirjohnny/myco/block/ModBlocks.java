@@ -68,7 +68,7 @@ public class ModBlocks {
 
     public static final Block GLOWCAP_MUSHROOM = registerBlock(
             "glowcap_mushroom",
-            new PuffBallMushroomBlock(
+            new MushroomPlantBlock(
                     TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.PALE_YELLOW)
@@ -77,6 +77,21 @@ public class ModBlocks {
                             .breakInstantly()
                             .sounds(BlockSoundGroup.GRASS)
                             .luminance(state -> 10)
+                            .postProcess(Blocks::always)
+                            .nonOpaque()
+                            .pistonBehavior(PistonBehavior.DESTROY)));
+
+    public static final Block PUFFBALL_MUSHROOM = registerBlock(
+            "puffball_mushroom",
+            new PuffBallMushroomBlock(
+                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.GRAY)
+                            .noCollision()
+                            .ticksRandomly()
+                            .breakInstantly()
+                            .sounds(BlockSoundGroup.GRASS)
+                            .luminance(state -> 1)
                             .postProcess(Blocks::always)
                             .nonOpaque()
                             .pistonBehavior(PistonBehavior.DESTROY)));

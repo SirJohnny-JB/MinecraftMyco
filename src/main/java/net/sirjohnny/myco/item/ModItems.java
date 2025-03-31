@@ -23,6 +23,7 @@ public class ModItems {
     public static final Item INKCAP_MUSHROOM_ITEM = registerModBlockItem("inkcap_mushroom", ModBlocks.INKCAP_MUSHROOM);
     public static final Item DESTROYING_ANGEL_MUSHROOM_ITEM = registerModBlockItem("destroying_angel_mushroom", ModBlocks.DESTROYING_ANGEL_MUSHROOM);
     public static final Item GLOWCAP_MUSHROOM_ITEM = registerModBlockItem("glowcap_mushroom", ModBlocks.GLOWCAP_MUSHROOM);
+    public static final Item PUFFBALL_MUSHROOM_ITEM = registerModBlockItem("puffball_mushroom", ModBlocks.PUFFBALL_MUSHROOM);
 
 
     public static final Item COTTON_SWAB = registerItem("cotton_swab", new CottonSwabItem(new Item.Settings()));
@@ -47,6 +48,7 @@ public class ModItems {
             entries.add(INKCAP_MUSHROOM_ITEM);
             entries.add(DESTROYING_ANGEL_MUSHROOM_ITEM);
             entries.add(GLOWCAP_MUSHROOM_ITEM);
+            entries.add(PUFFBALL_MUSHROOM_ITEM);
         });
 
 

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "puffed=false": {
+      "model": "myco:block/puffball_mushroom"
+    },
+    "puffed=true": {
+      "model": "myco:block/puffball_mushroom_puffed"
+    }
+  }
+}

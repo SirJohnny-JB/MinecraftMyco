@@ -59,8 +59,9 @@ public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
             // to set extract components based on mushroom provided
             if (stack.isIn(ModTags.Items.FUNGI)){
                 // First slot = source, second slot = chemical - see setDetails()
-                mushroomId = setDetails(stack).getFirst();
-                chemical = setDetails(stack).getLast();
+                ArrayList<String> details = setDetails(stack);
+                mushroomId = details.getFirst();
+                chemical = details.getLast();
             }
 
         }
