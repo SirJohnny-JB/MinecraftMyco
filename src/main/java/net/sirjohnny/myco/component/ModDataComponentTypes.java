@@ -1,12 +1,9 @@
 package net.sirjohnny.myco.component;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.BlockState;
 import net.minecraft.component.ComponentType;
-import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.sirjohnny.myco.Myco;
 

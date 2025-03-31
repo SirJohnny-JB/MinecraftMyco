@@ -5,7 +5,6 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.sound.SoundEvents;
 
 public class LethalPoisonEffect extends StatusEffect {
     public LethalPoisonEffect(StatusEffectCategory category, int color) {

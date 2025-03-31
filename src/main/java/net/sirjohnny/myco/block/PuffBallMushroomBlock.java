@@ -93,6 +93,27 @@ public class PuffBallMushroomBlock extends ModMushroomBlock{
             world.setBlockState(pos, state.with(PUFFED, true), Block.NOTIFY_ALL);
             int delay = world.getRandom().nextBetween(1200,6000);
             world.scheduleBlockTick(pos, this, delay);
+        } else if (!world.isClient
+                && entity instanceof LivingEntity living
+                && world instanceof ServerWorld serverWorld
+                && !state.get(PUFFED)) {
+            serverWorld.spawnParticles(
+                    ParticleTypes.CLOUD,
+                    pos.getX() + 0.5,
+                    pos.getY() + 0.5,
+                    pos.getZ() + 0.5,
+                    10,
+                    0.3, 0.2, 0.3,
+                    0.01
+            );
+            world.playSound(null, pos, SoundEvents.ENTITY_SNOW_GOLEM_DEATH, SoundCategory.BLOCKS, 0.7F, 1.3F);
+
+            living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 50, 0));
+
+            world.setBlockState(pos, state.with(PUFFED, true), Block.NOTIFY_ALL);
+            int delay = world.getRandom().nextBetween(1200, 6000);
+            world.scheduleBlockTick(pos, this, delay);
+
         }
         super.onEntityCollision(state, world, pos, entity);
     }
@@ -116,8 +137,7 @@ public class PuffBallMushroomBlock extends ModMushroomBlock{
             world.playSound(null, pos, SoundEvents.ENTITY_SNOW_GOLEM_DEATH, SoundCategory.BLOCKS, 0.7F, 1.3F);
 
             world.setBlockState(pos, state.with(PUFFED, true), Block.NOTIFY_ALL);
-//            int delay = world.getRandom().nextBetween(1200,6000);
-            int delay = world.getRandom().nextBetween(500,700);
+            int delay = world.getRandom().nextBetween(1200,3000);
             world.scheduleBlockTick(pos, this, delay);
         }
         super.onProjectileHit(world, state, hit, projectile);
@@ -166,18 +186,4 @@ public class PuffBallMushroomBlock extends ModMushroomBlock{
         return this.getDefaultState().with(PUFFED, false);
     }
 
-//    @Override
-//    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-//        BlockPos targetPos = pos.add(
-//                random.nextInt(3) - 1,
-//                random.nextInt(2) - random.nextInt(2),
-//                random.nextInt(3) - 1
-//        );
-//
-//        if (world.isAir(targetPos) && state.canPlaceAt(world, targetPos)) {
-//            world.setBlockState(targetPos, this.getDefaultState().with(PUFFED, false), Block.NOTIFY_ALL);
-//        }
-//
-//        super.randomTick(state, world, pos, random);
-//    }
 }

@@ -24,7 +24,6 @@ public class Myco implements ModInitializer {
 
 
 		ModItems.registerModItems();
-//		ModBlocks.registerModBlocks();
 		ModPotions.registerPotions();
 		ModEffects.registerEffects();
 		ModRecipes.registerRecipeSerializers();

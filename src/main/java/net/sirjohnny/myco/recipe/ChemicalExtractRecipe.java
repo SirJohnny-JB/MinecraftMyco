@@ -17,7 +17,6 @@ import net.sirjohnny.myco.util.ModTags;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
 
