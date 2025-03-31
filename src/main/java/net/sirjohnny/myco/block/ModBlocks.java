@@ -68,7 +68,7 @@ public class ModBlocks {
 
     public static final Block GLOWCAP_MUSHROOM = registerBlock(
             "glowcap_mushroom",
-            new ModMushroomBlock(
+            new PuffBallMushroomBlock(
                     TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.PALE_YELLOW)
