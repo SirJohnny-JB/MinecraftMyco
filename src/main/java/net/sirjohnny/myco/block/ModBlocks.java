@@ -106,15 +106,4 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, Identifier.of(Myco.MOD_ID, name),
                 new BlockItem(block, new Item.Settings()));
     }
-
-//    public static void registerModBlocks() {
-//        Myco.LOGGER.info("Registering Mod Blocks for " + Myco.MOD_ID);
-//        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-//            entries.add(FUNGAL_PLANTER);
-//            entries.add(INKCAP_MUSHROOM);
-//            entries.add(FLY_AGARIC_MUSHROOM);
-//            entries.add(DESTROYING_ANGEL_MUSHROOM);
-//        });
-//
-//    }
 }

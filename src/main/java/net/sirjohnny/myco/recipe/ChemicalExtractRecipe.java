@@ -102,6 +102,9 @@ public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
                     System.out.println("Case 4");
                     chemical = "Gloidine";
                     break;
+                case "Puffball Mushroom":
+                    chemical = "Antioxidants";
+                    break;
                 default:
                     System.out.println("Ingredient not determined: " + stack.getItem().getName().getString());
             }
