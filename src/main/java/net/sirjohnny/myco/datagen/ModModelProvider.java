@@ -32,5 +32,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BOTTLE_OF_MUSCIMOL, Models.GENERATED);
         itemModelGenerator.register(ModItems.SWABBED_SPORES, Models.GENERATED);
         itemModelGenerator.register(ModItems.COTTON_SWAB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BOTTLE_OF_INK, Models.GENERATED);
     }
 }

@@ -24,7 +24,7 @@ public class ModBlocks {
     public static final Block INKCAP_MUSHROOM = registerBlock(
             "inkcap_mushroom",
             new ModMushroomBlock(
-                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
+                    null,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.BLACK)
                             .noCollision()
@@ -39,7 +39,7 @@ public class ModBlocks {
     public static final Block FLY_AGARIC_MUSHROOM = registerBlock(
             "fly_agaric_mushroom",
             new ModMushroomBlock(
-                    TreeConfiguredFeatures.HUGE_RED_MUSHROOM,
+                    null,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.RED)
                             .noCollision()
@@ -54,7 +54,7 @@ public class ModBlocks {
     public static final Block DESTROYING_ANGEL_MUSHROOM = registerBlock(
             "destroying_angel_mushroom",
             new ModMushroomBlock(
-                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
+                    null,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.WHITE)
                             .noCollision()
@@ -69,7 +69,7 @@ public class ModBlocks {
     public static final Block GLOWCAP_MUSHROOM = registerBlock(
             "glowcap_mushroom",
             new MushroomPlantBlock(
-                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
+                    null,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.PALE_YELLOW)
                             .noCollision()
@@ -84,7 +84,7 @@ public class ModBlocks {
     public static final Block PUFFBALL_MUSHROOM = registerBlock(
             "puffball_mushroom",
             new PuffBallMushroomBlock(
-                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM,
+                    null,
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.GRAY)
                             .noCollision()
