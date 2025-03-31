@@ -15,6 +15,8 @@ import net.sirjohnny.myco.component.ModDataComponentTypes;
 import net.sirjohnny.myco.item.ModItems;
 import net.sirjohnny.myco.util.ModTags;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
@@ -33,12 +35,6 @@ public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
             ItemStack stack = input.getStackInSlot(i);
             if (!stack.isEmpty()) {
                 Item item = stack.getItem();
-                // check if ingredient is a mushroom (if statement for debug purposes)
-                if (stack.isIn(ModTags.Items.FUNGI)){
-                    System.out.println("SIRJOHNNY: " + item.getName().getString() + ": is a mushroom");
-                } else {
-                    System.out.println("SIRJOHNNY: " + item.getName().getString() + ": is not a mushroom");
-                }
 
                 if (item == Items.GLASS_BOTTLE) hasBottle = true;
                 else if (item.getDefaultStack().isIn(ModTags.Items.FUNGI)) hasMushroom = true;
@@ -52,34 +48,66 @@ public class ChemicalExtractRecipe extends SpecialCraftingRecipe{
     @Override
     public ItemStack craft(CraftingRecipeInput inventory, RegistryWrapper.WrapperLookup manager) {
         String mushroomId = "unknown"; // placeholder
+        String chemical = "none"; // placeholder
 
+        // for each crafting grid slot, determine item stack and tag
         for (int i = 0; i < inventory.getSize(); i++){
             ItemStack stack = inventory.getStackInSlot(i);
             System.out.println("SIRJOHNNY: SELECTED SLOT: " + stack.getItem().getDefaultStack().getName().getString());
 
-            // Assigns mushroom species to 'mushroomId'
-            if (!stack.isEmpty() && Objects.equals(stack.getItem().getDefaultStack().getName().getString(), "Fly Agaric Mushroom")){
-                System.out.println("SIRJOHNNY: THIS IS A MUSHROOM");
-                mushroomId = stack.getItem().getDefaultStack().getName().getString();
-                System.out.println(mushroomId);
-                break;
+            // If itemstack is a mushroom, call setDetails()
+            // to set extract components based on mushroom provided
+            if (stack.isIn(ModTags.Items.FUNGI)){
+                // First slot = source, second slot = chemical - see setDetails()
+                mushroomId = setDetails(stack).getFirst();
+                chemical = setDetails(stack).getLast();
             }
 
         }
 
+        // Create resultant itemstack and set components determined in setDetails()
         ItemStack result = new ItemStack(ModItems.FUNGAL_EXTRACT);
         result.set(ModDataComponentTypes.FUNGISOURCE, mushroomId); // Assigns mushroomId as the source of the chemical
+        result.set(ModDataComponentTypes.CHEMICAL, chemical);
 
-        // Checks mushroom species and assigns chemicals accordingly
-        if (Objects.equals(result.get(ModDataComponentTypes.FUNGISOURCE), "Fly Agaric Mushroom")){
-            result.set(ModDataComponentTypes.CHEMICAL, "Muscimol");
-        }
-        System.out.println(result.get(ModDataComponentTypes.FUNGISOURCE));
-
-//        result.set(DataComponentTypes.LORE, new LoreComponent(List.of(
-//                Text.literal("Extracted from: " + mushroomId)
-//        )));
+        // Return Chemical Extract with components set
         return result;
+    }
+
+    // Returns an array of extract details determined by mushroom provided
+    private ArrayList<String> setDetails(ItemStack stack){
+        String mushroomId = "unknown";
+        String chemical = "none";
+
+        // Logic
+        if (!stack.isEmpty()) {
+            // Set source mushroom
+            mushroomId = stack.getItem().getName().getString();
+            // Iterate possible mushrooms and set chemicals accordingly
+            switch (stack.getItem().getName().getString()) {
+                case "Fly Agaric Mushroom":
+                    System.out.println("Case 1");
+                    chemical = "Muscimol";
+                    break;
+                case "Destroying Angel Mushroom":
+                    System.out.println("Case 2");
+                    chemical = "Amatoxin";
+                    break;
+                case "Inkcap Mushroom":
+                    System.out.println("Case 3");
+                    chemical = "Coprine";
+                    break;
+                case "Glowcap Mushroom":
+                    System.out.println("Case 4");
+                    chemical = "Gloidine";
+                    break;
+                default:
+                    System.out.println("Ingredient not determined: " + stack.getItem().getName().getString());
+            }
+        }
+
+        // Return resultant components via arrayList
+        return new ArrayList<>(List.of(mushroomId, chemical));
     }
 
     @Override
