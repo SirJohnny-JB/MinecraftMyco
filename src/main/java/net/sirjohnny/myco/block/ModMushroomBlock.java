@@ -26,6 +26,8 @@ public class ModMushroomBlock extends MushroomPlantBlock {
     @Override
     protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockState blockBelow = world.getBlockState(pos.down());
-        return blockBelow.isOf(Blocks.GRASS_BLOCK) || blockBelow.isIn(BlockTags.MUSHROOM_GROW_BLOCK);
+        return blockBelow.isOf(Blocks.GRASS_BLOCK)
+                || blockBelow.isOf(Blocks.MOSS_BLOCK)
+                || blockBelow.isIn(BlockTags.MUSHROOM_GROW_BLOCK);
     }
 }
